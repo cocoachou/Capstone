@@ -1,12 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Login from './screens/LoginScreen';
+import LoginScreen from './screens/LoginScreen';
+import StageScreen from './screens/StageScreen';
 
 const App = () => {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <Login />
+      {/* <LoginScreen /> */}
+      <StageScreen />
     </View>
   );
 };
