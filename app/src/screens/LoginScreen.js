@@ -1,7 +1,21 @@
-import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
+import {
+  Image,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Input from '../components/Input';
 
-const Login = () => {
+const LoginScreen = () => {
+  const navigation = useNavigation();
+
+  const PressLogin = () => {
+    navigation.navigate('StageScreen');
+  };
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -11,6 +25,9 @@ const Login = () => {
         <View style={styles.inputContainer}>
           <Input title={'ID'} placeholder={'drawing@email.com'} />
           <Input title={'PASSWORD'} placeholder={'* * * * * *'} />
+          <TouchableOpacity onPress={PressLogin} style={styles.Button}>
+            <Text style={styles.ButtonText}>Login</Text>
+          </TouchableOpacity>
         </View>
       </ImageBackground>
     </View>
@@ -32,8 +49,22 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingHorizontal: 20,
     marginTop: '70%',
-    position: 'absolute',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  Button: {
+    width: '50%',
+    padding: 10,
+    backgroundColor: '#000000',
+    margin: 10,
+    borderRadius: 10,
+  },
+  ButtonText: {
+    fontSize: 16,
+    color: 'white',
+    textAlign: 'center',
   },
 });
 
-export default Login;
+export default LoginScreen;
