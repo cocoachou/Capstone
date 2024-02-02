@@ -2,7 +2,10 @@ import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
 
 const Stage = ({ stageNumber, onPress }) => {
   return (
-    <TouchableOpacity onPress={() => onPress(stageNumber)} style={styles.buttonContainer}>
+    <TouchableOpacity
+      onPress={() => onPress(stageNumber)}
+      style={styles.buttonContainer}
+    >
       <View>
         <Text style={styles.buttonText}>Stage {stageNumber}</Text>
       </View>
@@ -12,12 +15,12 @@ const Stage = ({ stageNumber, onPress }) => {
 
 const styles = StyleSheet.create({
   buttonContainer: {
+    width: 100,
+    height: 100,
     padding: 10,
-    margin: 5,
-    borderWidth: 1,
-    borderColor: 'black',
+    margin: 7,
     backgroundColor: '#DDDDDD',
-    borderRadius: 5,
+    borderRadius: 10,
   },
   buttonText: {
     fontSize: 16,
