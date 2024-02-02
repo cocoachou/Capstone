@@ -1,4 +1,4 @@
-import { View, ScrollView, StyleSheet } from 'react-native';
+import { View, ScrollView, StyleSheet, Text } from 'react-native';
 import Stage from '../components/Stage';
 
 const StageScreen = () => {
@@ -9,9 +9,12 @@ const StageScreen = () => {
   ));
 
   return (
-    <ScrollView contentContainerStyle={styles.stageContainer}>
-      {stageArray}
-    </ScrollView>
+    <View>
+      <Text style={styles.title}>Stage</Text>
+      <ScrollView contentContainerStyle={styles.stageContainer}>
+        {stageArray}
+      </ScrollView>
+    </View>
   );
 };
 
@@ -20,6 +23,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
+  },
+  title: {
+    margin: 30,
+    marginTop: 60,
+    fontSize: 30,
+    textAlign: 'center',
   },
 });
 
