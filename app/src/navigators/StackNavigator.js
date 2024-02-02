@@ -13,7 +13,14 @@ const StackNavigator = () => {
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
-        <Stack.Screen name="StageScreen" component={StageScreen} />
+        <Stack.Screen
+          name="StageScreen"
+          component={StageScreen}
+          options={{
+            title: '',
+            headerShown: true,
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
