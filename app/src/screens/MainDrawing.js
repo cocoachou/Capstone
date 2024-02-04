@@ -124,16 +124,16 @@ class DrawingScreen extends React.Component {
     return (
       <View {...this.panResponder.panHandlers}>
         <Modal visible={showModal} transparent={true}>
-          <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#ffffff'}}>
+          <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#DDDDDD'}}>
             <View style={{width: '80%', backgroundColor: 'white', padding: 40, borderRadius: 10}}>
               <Text style={{fontSize: 40, marginBottom: 50}}>점수: </Text>
               <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                <TouchableOpacity style={{backgroundColor: '#007BFF', padding: 10, borderRadius: 5, flex: 1, marginRight: 10}} onPress={this.handleRetry}>
-                  <Text style={{color: 'white', textAlign: 'center'}}>다시하기</Text>
+                <TouchableOpacity style={{backgroundColor: '#DDDDDD', borderRadius: 10, padding: 10, borderRadius: 5, flex: 1, marginRight: 10}} onPress={this.handleRetry}>
+                  <Text style={{textAlign: 'center'}}>다시하기</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={{backgroundColor: '#007BFF', padding: 10, borderRadius: 5, flex: 1}} onPress={() => this.setState({ showModal: false })}>
-                  <Text style={{color: 'white', textAlign: 'center'}}>완료하기</Text>
-                </TouchableOpacity>
+                <TouchableOpacity style={{backgroundColor: '#DDDDDD', borderRadius: 10, padding: 10, borderRadius: 5, flex: 1}} onPress={() => this.setState({ showModal: false })}>
+                  <Text style={{textAlign: 'center'}}>완료하기</Text>
+                </TouchableOpacity> 
               </View>
             </View>
           </View>
@@ -149,10 +149,10 @@ class DrawingScreen extends React.Component {
               <View style={{backgroundColor: color, width: 40, height: 40, margin: 10, borderWidth: 2, borderColor: 'gray'}} />
             </TouchableOpacity>))}
               </View>
-            <Text style={{textAlign: 'center', fontSize: 30, fontWeight: 'bold', marginTop: 20, backgroundColor: '#f5f5dc'}}>글자</Text>
+            <Text style={{textAlign: 'center', fontSize: 30, fontWeight: 'bold', marginTop: 20, backgroundColor: '#DDDDDD'}}>글자</Text>
             <View style={{marginTop: 50, justifyContent: 'flex-end', alignItems: 'center'}}>
-              <TouchableOpacity onPress={this.handleEnd} style={{width: 100, height: 100, backgroundColor: 'blue', alignItems: 'center', justifyContent: 'center'}}>
-                <Text style={{color: 'white'}}>완료</Text>
+              <TouchableOpacity onPress={this.handleEnd} style={{borderRadius: 10, width: 100, height: 100, padding: 10, margin: 7, backgroundColor: '#DDDDDD', alignItems: 'center', justifyContent: 'center', borderRadius: 10}}>
+                <Text style={{fontSize: 16}}>완료</Text>
               </TouchableOpacity>
             </View>
         </View>
