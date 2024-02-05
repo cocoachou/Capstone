@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Button, Modal, TouchableOpacity, Text, PanResponder } from 'react-native';
 import Canvas, { Image as CanvasImage } from 'react-native-canvas';
 import ViewShot from "react-native-view-shot";
-
+import styles from '../components/Drawing'; 
 
 class DrawingScreen extends React.Component {
   state = {
@@ -119,19 +119,19 @@ class DrawingScreen extends React.Component {
     };
   }
   render() {
-    const { showModal, uri } = this.state;
+    const { showModal } = this.state;
     const colors = ['black', 'white', 'red', 'blue', 'green', 'yellow'];
     return (
       <View {...this.panResponder.panHandlers}>
         <Modal visible={showModal} transparent={true}>
-          <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#DDDDDD'}}>
-            <View style={{width: '80%', backgroundColor: 'white', padding: 40, borderRadius: 10}}>
+          <View style={styles.modalStyle}>
+            <View style={styles.modalInnerStyle}>
               <Text style={{fontSize: 40, marginBottom: 50}}>점수: </Text>
               <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                <TouchableOpacity style={{backgroundColor: '#DDDDDD', borderRadius: 10, padding: 10, borderRadius: 5, flex: 1, marginRight: 10}} onPress={this.handleRetry}>
+                <TouchableOpacity style={[styles.buttonStyle, {marginRight: 10}]} onPress={this.handleRetry}>
                   <Text style={{textAlign: 'center'}}>다시하기</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={{backgroundColor: '#DDDDDD', borderRadius: 10, padding: 10, borderRadius: 5, flex: 1}} onPress={() => this.setState({ showModal: false })}>
+                <TouchableOpacity style={styles.buttonStyle} onPress={() => this.setState({ showModal: false })}>
                   <Text style={{textAlign: 'center'}}>완료하기</Text>
                 </TouchableOpacity> 
               </View>
@@ -140,26 +140,25 @@ class DrawingScreen extends React.Component {
         </Modal>
 
         <ViewShot ref={this.ViewShot} options={{ format: 'png', quality: 1 }}>
-          <Canvas ref={this.handleCanvas} style={{width: 300, height: 500}} onLayout={this.onCanvasLayout} />
+          <Canvas ref={this.handleCanvas} style={styles.canvasStyle} onLayout={this.onCanvasLayout} />
         </ViewShot>
   
         <View style={{flexDirection: 'row', justifyContent: 'space-around', flexWrap: 'wrap'}}>
           {colors.map((color) => (
             <TouchableOpacity key={color} onPress={() => this.handleColor(color)}>
-              <View style={{backgroundColor: color, width: 40, height: 40, margin: 10, borderWidth: 2, borderColor: 'gray'}} />
-            </TouchableOpacity>))}
-              </View>
-            <Text style={{textAlign: 'center', fontSize: 30, fontWeight: 'bold', marginTop: 20, backgroundColor: '#DDDDDD'}}>글자</Text>
-            <View style={{marginTop: 50, justifyContent: 'flex-end', alignItems: 'center'}}>
-              <TouchableOpacity onPress={this.handleEnd} style={{borderRadius: 10, width: 100, height: 100, padding: 10, margin: 7, backgroundColor: '#DDDDDD', alignItems: 'center', justifyContent: 'center', borderRadius: 10}}>
-                <Text style={{fontSize: 16}}>완료</Text>
-              </TouchableOpacity>
-            </View>
+              <View style={[styles.colorBox, {backgroundColor: color}]} />
+            </TouchableOpacity>
+          ))}
         </View>
+        <Text style={styles.textStyle}>글자</Text>
+        <View style={{marginTop: 50, justifyContent: 'flex-end', alignItems: 'center'}}>
+          <TouchableOpacity onPress={this.handleEnd} style={styles.endButtonStyle}>
+            <Text style={{fontSize: 16}}>완료</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     );
   }
-  
-
 }
 
 export default DrawingScreen;
