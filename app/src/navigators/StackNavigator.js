@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from '../screens/LoginScreen';
 import StageScreen from '../screens/StageScreen';
+import MainDrawing from '../screens/MainDrawing';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ const StackNavigator = () => {
             headerShown: true,
           }}
         />
+        <Stack.Screen name="MainDrawing" component={MainDrawing} />
       </Stack.Navigator>
     </NavigationContainer>
   );
