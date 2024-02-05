@@ -1,9 +1,11 @@
 import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
 
-const Stage = ({ stageNumber, onPress }) => {
+
+const Stage = ({ stageNumber,stageLabel, onPress }) => {
+  const handlePress = () => onPress(stageNumber, stageLabel); // stageLabel을 그대로 전달
   return (
     <TouchableOpacity
-      onPress={() => onPress(stageNumber)}
+      onPress={handlePress} 
       style={styles.buttonContainer}
     >
       <View>
