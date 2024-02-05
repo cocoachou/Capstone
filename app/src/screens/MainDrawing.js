@@ -119,6 +119,7 @@ class DrawingScreen extends React.Component {
     };
   }
   render() {
+    const { stageLabel } = this.props.route.params; // 전달받은 stageLabel을 가져옴
     const { showModal } = this.state;
     const colors = ['black', 'white', 'red', 'blue', 'green', 'yellow'];
     return (
@@ -150,7 +151,7 @@ class DrawingScreen extends React.Component {
             </TouchableOpacity>
           ))}
         </View>
-        <Text style={styles.textStyle}>글자</Text>
+        <Text style={styles.textStyle}>{stageLabel}</Text>
         <View style={{marginTop: 50, justifyContent: 'flex-end', alignItems: 'center'}}>
           <TouchableOpacity onPress={this.handleEnd} style={styles.endButtonStyle}>
             <Text style={{fontSize: 16}}>완료</Text>
