@@ -76,13 +76,17 @@ class DrawingScreen extends React.Component {
   };
 
   handleEnd = async () => {
-    if (this.ViewShot.current) {
+    if (this.ViewShot.current && this.canvas) {
       try {
-        const uri = await this.ViewShot.current.capture();
-        console.log("do something with ", uri);
+        const uri = await this.ViewShot.current.capture({
+          format: 'png',
+          quality: 1,
+          result: 'data-uri',
+        });
+        console.log("Capture: ", uri);
         this.setState({ showModal: true, uri });
       } catch (error) {
-        console.error('Error capturing ViewShot:', error);
+        console.error('Error: ', error);
       }
     }
   };
