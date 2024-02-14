@@ -175,11 +175,13 @@ class DrawingScreen extends React.Component {
         </Modal>
 
         <ViewShot ref={this.ViewShot} options={{ format: 'png', quality: 1 }}>
-          <Canvas
+          <View style={{backgroundColor: 'white'}}>
+            <Canvas
             ref={this.handleCanvas}
             style={styles.canvasStyle}
             onLayout={this.onCanvasLayout}
-          />
+            />
+          </View>
         </ViewShot>
 
         <View
