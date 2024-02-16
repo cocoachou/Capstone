@@ -1,6 +1,6 @@
 import * as FileSystem from 'expo-file-system';
 
-const server = '';
+const server = ''; //서버주소 입력
 
 const LoadFile = async (uri) => {
   const formData = new FormData();
