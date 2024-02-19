@@ -13,7 +13,7 @@ const LoginScreen = () => {
   const navigation = useNavigation();
 
   const PressLogin = () => {
-    navigation.navigate('StageScreen');
+    navigation.navigate('MainScreen');
   };
 
   return (
