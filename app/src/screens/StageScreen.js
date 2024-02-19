@@ -3,7 +3,6 @@ import Stage from '../components/Stage';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 
-
 const StageScreen = () => {
   const numberOfStages = 30;
   const navigation = useNavigation();
@@ -11,7 +10,7 @@ const StageScreen = () => {
   const [completedStages, setCompletedStages] = React.useState(Array(numberOfStages).fill(false));
 
   const onPress = (stageNumber, stageLabel) => {
-    navigation.navigate('MainDrawing', { 
+    navigation.navigate('DrawingScreen', { 
       stageNumber: stageNumber, 
       stageLabel: stageLabel, 
       setCompletedStages: setCompletedStages 
@@ -30,7 +29,7 @@ const StageScreen = () => {
     <View>
       <Text style={styles.title}>Stage</Text>
       <ScrollView contentContainerStyle={styles.stageContainer}>
-        {stageArray.map((stage, index) => (
+      {stageArray.map((stage, index) => (
           <Stage
             key={index + 1}
             stageNumber={index + 1}
