@@ -8,7 +8,7 @@ const StageScreen = () => {
   const stageLabels = ['test1','test2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30'];
 
   const onPress = (stageNumber, stageLabel) => {
-    navigation.navigate('MainDrawing', { stageLabel });
+    navigation.navigate('DrawingScreen', { stageLabel });
   };
 
   const stageArray = Array.from({ length: numberOfStages }, (_, index) => {
