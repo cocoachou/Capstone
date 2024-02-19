@@ -1,14 +1,20 @@
 import { View, ScrollView, StyleSheet, Text } from 'react-native';
 import Stage from '../components/Stage';
 import { useNavigation } from '@react-navigation/native';
+import React from 'react';
 
 const StageScreen = () => {
   const numberOfStages = 30;
   const navigation = useNavigation();
   const stageLabels = ['test1','test2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30'];
+  const [completedStages, setCompletedStages] = React.useState(Array(numberOfStages).fill(false));
 
   const onPress = (stageNumber, stageLabel) => {
-    navigation.navigate('DrawingScreen', { stageLabel });
+    navigation.navigate('DrawingScreen', { 
+      stageNumber: stageNumber, 
+      stageLabel: stageLabel, 
+      setCompletedStages: setCompletedStages 
+    });
   };
 
   const stageArray = Array.from({ length: numberOfStages }, (_, index) => {
@@ -23,7 +29,15 @@ const StageScreen = () => {
     <View>
       <Text style={styles.title}>Stage</Text>
       <ScrollView contentContainerStyle={styles.stageContainer}>
-        {stageArray}
+      {stageArray.map((stage, index) => (
+          <Stage
+            key={index + 1}
+            stageNumber={index + 1}
+            stageLabel={stageLabels[index]}
+            onPress={onPress}
+            isCompleted={completedStages[index]}
+          />
+        ))}
       </ScrollView>
     </View>
   );

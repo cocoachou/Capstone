@@ -165,7 +165,15 @@ class DrawingScreen extends React.Component {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.buttonStyle}
-                  onPress={() => this.setState({ showModal: false })}
+                  onPress={() => {
+                    this.setState({ showModal: false });
+                    this.props.route.params.setCompletedStages(prevStages => {
+                      const newStages = [...prevStages];
+                      newStages[this.props.route.params.stageNumber - 1] = true;
+                      return newStages;
+                    });
+                    this.props.navigation.goBack();
+                  }}
                 >
                   <Text style={{ textAlign: 'center' }}>완료하기</Text>
                 </TouchableOpacity>
