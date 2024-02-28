@@ -16,6 +16,7 @@ const StageScreen = () => {
       stageNumber: stageNumber,
       stageLabel: stageLabel,
       completedStages: completedStages,
+      setCompletedStages: setCompletedStages,
     });
   };
 
