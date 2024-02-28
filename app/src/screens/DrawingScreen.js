@@ -146,82 +146,89 @@ class DrawingScreen extends React.Component {
     const { showModal } = this.state;
     const colors = ['black', 'white', 'red', 'blue', 'green', 'yellow'];
     return (
-      <View {...this.panResponder.panHandlers}>
-        <Modal visible={showModal} transparent={true}>
-          <View style={styles.modalStyle}>
-            <View style={styles.modalInnerStyle}>
-              <Text style={{ fontSize: 40, marginBottom: 50 }}>점수: </Text>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                }}
-              >
-                <TouchableOpacity
-                  style={[styles.buttonStyle, { marginRight: 10 }]}
-                  onPress={this.handleRetry}
-                >
-                  <Text style={{ textAlign: 'center' }}>다시하기</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={styles.buttonStyle}
-                  onPress={() => {
-                    this.setState({ showModal: false });
-                    this.props.route.params.setCompletedStages(prevStages => {
-                      const newStages = [...prevStages];
-                      newStages[this.props.route.params.stageNumber - 1] = true;
-                      return newStages;
-                    });
-                    this.props.navigation.goBack();
+      <View>
+        <Text style={styles.textStyle}>{stageLabel}</Text>
+        <View {...this.panResponder.panHandlers}>
+          <Modal visible={showModal} transparent={true}>
+            <View style={styles.modalStyle}>
+              <View style={styles.modalInnerStyle}>
+                <Text style={{ fontSize: 40, marginBottom: 50 }}>점수: </Text>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
                   }}
                 >
-                  <Text style={{ textAlign: 'center' }}>완료하기</Text>
-                </TouchableOpacity>
+                  <TouchableOpacity
+                    style={[styles.buttonStyle]}
+                    onPress={this.handleRetry}
+                  >
+                    <Text style={{ textAlign: 'center' }}>다시하기</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.buttonStyle}
+                    onPress={() => {
+                      this.setState({ showModal: false });
+                      this.props.route.params.setCompletedStages(
+                        (prevStages) => {
+                          const newStages = [...prevStages];
+                          newStages[
+                            this.props.route.params.stageNumber - 1
+                          ] = true;
+                          return newStages;
+                        }
+                      );
+                      this.props.navigation.goBack();
+                    }}
+                  >
+                    <Text style={{ textAlign: 'center' }}>완료하기</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             </View>
-          </View>
-        </Modal>
+          </Modal>
 
-        <ViewShot ref={this.ViewShot} options={{ format: 'png', quality: 1 }}>
-          <View style={{backgroundColor: 'white'}}>
-            <Canvas
-            ref={this.handleCanvas}
-            style={styles.canvasStyle}
-            onLayout={this.onCanvasLayout}
-            />
-          </View>
-        </ViewShot>
+          <ViewShot ref={this.ViewShot} options={{ format: 'png', quality: 1 }}>
+            <View style={{ backgroundColor: 'white' }}>
+              <Canvas
+                ref={this.handleCanvas}
+                style={styles.canvasStyle}
+                onLayout={this.onCanvasLayout}
+              />
+            </View>
+          </ViewShot>
 
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            flexWrap: 'wrap',
-          }}
-        >
-          {colors.map((color) => (
-            <TouchableOpacity
-              key={color}
-              onPress={() => this.handleColor(color)}
-            >
-              <View style={[styles.colorBox, { backgroundColor: color }]} />
-            </TouchableOpacity>
-          ))}
-        </View>
-        <Text style={styles.textStyle}>{stageLabel}</Text>
-        <View
-          style={{
-            marginTop: 50,
-            justifyContent: 'flex-end',
-            alignItems: 'center',
-          }}
-        >
-          <TouchableOpacity
-            onPress={this.handleEnd}
-            style={styles.endButtonStyle}
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              flexWrap: 'wrap',
+            }}
           >
-            <Text style={{ fontSize: 16 }}>완료</Text>
-          </TouchableOpacity>
+            {colors.map((color) => (
+              <TouchableOpacity
+                key={color}
+                onPress={() => this.handleColor(color)}
+              >
+                <View style={[styles.colorBox, { backgroundColor: color }]} />
+              </TouchableOpacity>
+            ))}
+          </View>
+
+          <View
+            style={{
+              marginTop: 50,
+              justifyContent: 'flex-end',
+              alignItems: 'center',
+            }}
+          >
+            <TouchableOpacity
+              onPress={this.handleEnd}
+              style={styles.endButtonStyle}
+            >
+              <Text style={[styles.endButtonText]}>완료</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     );
