@@ -21,8 +21,8 @@ export default StyleSheet.create({
     marginRight: 10,
   },
   canvasStyle: {
-    width: '100%',
-    height: '70%',
+    width: 300,
+    height: 500,
   },
   colorBox: {
     width: 40,

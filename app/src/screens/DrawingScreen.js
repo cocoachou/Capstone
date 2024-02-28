@@ -200,6 +200,7 @@ class DrawingScreen extends React.Component {
               flexDirection: 'row',
               justifyContent: 'space-around',
               flexWrap: 'wrap',
+              marginTop: '5%',
             }}
           >
             {colors.map((color) => (
@@ -214,7 +215,7 @@ class DrawingScreen extends React.Component {
 
           <View
             style={{
-              marginTop: 50,
+              marginTop: '5%',
               justifyContent: 'flex-end',
               alignItems: 'center',
             }}
