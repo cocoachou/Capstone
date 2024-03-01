@@ -196,12 +196,7 @@ class DrawingScreen extends React.Component {
           </ViewShot>
 
           <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-around',
-              flexWrap: 'wrap',
-              marginTop: '5%',
-            }}
+            style={styles.colorbox}
           >
             {colors.map((color) => (
               <TouchableOpacity
@@ -214,11 +209,7 @@ class DrawingScreen extends React.Component {
           </View>
 
           <View
-            style={{
-              marginTop: '5%',
-              justifyContent: 'flex-end',
-              alignItems: 'center',
-            }}
+            style={styles.endBottonView}
           >
             <TouchableOpacity
               onPress={this.handleEnd}
