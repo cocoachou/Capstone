@@ -4,7 +4,8 @@ const server = ''; //서버주소 입력
 
 const StageLabels = Words.map((item) => Object.keys(item)[0]);
 
-const LoadFile = async (uri, stageLabelValue) => {
+const LoadFile = async (uri, stageLabel) => {
+  const stageLabelValue = Words.find((item) => Object.keys(item)[0] === stageLabel)[stageLabel];
   const fileName = `${stageLabelValue}.png`;
   const formData = new FormData();
   formData.append('file', {
