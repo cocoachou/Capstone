@@ -1,13 +1,16 @@
-import * as FileSystem from 'expo-file-system';
+import Words from '../../data/words.json';
 
 const server = ''; //서버주소 입력
 
-const LoadFile = async (uri) => {
+const StageLabels = Words.map((item) => Object.keys(item)[0]);
+
+const LoadFile = async (uri, stageLabelValue) => {
+  const fileName = `${stageLabelValue}.png`;
   const formData = new FormData();
   formData.append('file', {
     uri,
     type: 'image/png',
-    name: 'image.png',
+    name: fileName,
   });
 
   try {
