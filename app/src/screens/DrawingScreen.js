@@ -11,6 +11,7 @@ import Canvas, { Image as CanvasImage } from 'react-native-canvas';
 import ViewShot from 'react-native-view-shot';
 import styles from '../components/Drawing';
 import LoadFile from '../components/LoadFile';
+import StageLabels from '../components/StageLabels';
 
 class DrawingScreen extends React.Component {
   state = {
@@ -92,6 +93,8 @@ class DrawingScreen extends React.Component {
 
   handleEnd = async () => {
     const { ViewShot, canvas } = this;
+    const { stageNumber } = this.props.route.params;
+    const stageLabel = StageLabels[stageNumber - 1];
     if (!ViewShot.current || !canvas) return;
 
     try {
@@ -100,7 +103,7 @@ class DrawingScreen extends React.Component {
         quality: 1,
       });
 
-      await LoadFile(uri);
+      await LoadFile(uri, stageLabel);
       console.log('capture:', uri);
 
       const resultData = require('../../data/result.json'); 
