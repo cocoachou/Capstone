@@ -1,6 +1,6 @@
 import Words from '../../data/words.json';
 
-const server = '';
+const server = ''; //서버주소 입력
 
 const StageLabels = Words.map((item) => Object.keys(item)[0]);
 

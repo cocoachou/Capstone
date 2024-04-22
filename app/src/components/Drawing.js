@@ -13,6 +13,12 @@ export default StyleSheet.create({
     padding: 40,
     borderRadius: 10,
   },
+  modalInnerText: {
+    fontSize: 40,
+    marginBottom: 50,
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
   buttonStyle: {
     backgroundColor: '#DDDDDD',
     borderRadius: 10,
@@ -30,15 +36,7 @@ export default StyleSheet.create({
     borderWidth: 2,
     borderColor: 'gray',
   },
-  endButtonStyle: {
-    borderRadius: 10,
-    width: 100,
-    height: 100,
-    padding: 10,
-    backgroundColor: '#DDDDDD',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  
   textStyle: {
     textAlign: 'center',
     fontSize: 30,
@@ -50,4 +48,25 @@ export default StyleSheet.create({
   endButtonText: {
     fontSize: 16,
   },
+  endBottonView: { 
+    marginTop: '5%',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  endButtonStyle: {
+    borderRadius: 10,
+    width: 100,
+    height: 100,
+    padding: 10,
+    backgroundColor: '#DDDDDD',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  colorbox: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    flexWrap: 'wrap',
+    marginTop: '5%',
+  },
+  
 });

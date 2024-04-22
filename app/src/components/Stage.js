@@ -1,8 +1,12 @@
 import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
 
 
-const Stage = ({ stageNumber, stageLabel, onPress, isCompleted }) => {
-  const handlePress = () => onPress(stageNumber, stageLabel); // stageLabel을 그대로 전달
+const Stage = ({ stageNumber, stageLabel, onPress, isCompleted, isLocked }) => {
+  const handlePress = () => {
+    if (!isLocked) {
+      onPress(stageNumber, stageLabel); // 잠겨있지 않은 경우에만 onPress 함수 호출
+    }
+  };
   return (
     <TouchableOpacity
       onPress={handlePress}
@@ -11,8 +15,10 @@ const Stage = ({ stageNumber, stageLabel, onPress, isCompleted }) => {
         isCompleted ? { backgroundColor: 'gray' } : { backgroundColor: '#DDDDDD' },
       ]}
     >
-      <View>
-        <Text style={styles.buttonText}>Stage {stageNumber}</Text>
+       <View>
+        <Text style={styles.buttonText}>
+          Stage {stageNumber} {isLocked && "🔒"} {/* 잠금 상태일 때 🔒 아이콘 표시 */}
+        </Text>
       </View>
     </TouchableOpacity>
   );
