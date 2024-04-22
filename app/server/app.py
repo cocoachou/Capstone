@@ -2,6 +2,12 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
 import os
+import sys
+
+sys.path.append('E:/J/Capstone/app/model/')
+from result import result
+
+folder_path = "app/server/uploads"
 
 app = Flask(__name__)
 CORS(app)
@@ -39,6 +45,9 @@ def upload_file():
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+        result(folder_path)
+
 
     return jsonify({'error': 'file format error'})
 

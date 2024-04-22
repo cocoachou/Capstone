@@ -1,13 +1,16 @@
 from CLIP import clip
 import torch
 from PIL import Image
+import os
+from category import category
 
 def probs(image_path):
     device = "cuda" if torch.cuda.is_available() else "cpu"
     model, preprocess = clip.load("ViT-B/32", device=device)
 
-    text_list = ["airplane", "cherry", "onion", "tomato", "watermelon"]
-    text_list_sketch = ["a sketch of " + item for item in text_list]
+    text_list = category(image_path)
+
+    text_list_sketch = ["A quick drawn doodle of " + item for item in text_list]
 
     text = clip.tokenize(text_list_sketch).to(device)
 
