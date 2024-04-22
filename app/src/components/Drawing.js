@@ -13,6 +13,12 @@ export default StyleSheet.create({
     padding: 40,
     borderRadius: 10,
   },
+  modalInnerText: {
+    fontSize: 40,
+    marginBottom: 50,
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
   buttonStyle: {
     backgroundColor: '#DDDDDD',
     borderRadius: 10,

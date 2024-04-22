@@ -11,7 +11,6 @@ import Canvas, { Image as CanvasImage } from 'react-native-canvas';
 import ViewShot from 'react-native-view-shot';
 import styles from '../components/Drawing';
 import LoadFile from '../components/LoadFile';
-import StageLabels from '../components/StageLabels';
 
 class DrawingScreen extends React.Component {
   state = {
@@ -93,9 +92,6 @@ class DrawingScreen extends React.Component {
 
   handleEnd = async () => {
     const { ViewShot, canvas } = this;
-    const { stageNumber } = this.props.route.params;
-    const stageLabel = StageLabels[stageNumber - 1];
-
     if (!ViewShot.current || !canvas) return;
 
     try {
@@ -104,10 +100,13 @@ class DrawingScreen extends React.Component {
         quality: 1,
       });
 
-      await LoadFile(uri, stageLabel);
-      console.log('capture:', uri, stageLabel);
+      await LoadFile(uri);
+      console.log('capture:', uri);
 
-      this.setState({ showModal: true, uri });
+      const resultData = require('../../data/result.json'); 
+      const resultMessage = resultData.result === "1" ? '참 잘했어요!' : '다시 해봐요!'; //text로 받는게 아니면 "" 지우고 해주세요
+
+      this.setState({ showModal: true, uri, resultMessage }); 
     } catch (error) {
       console.error('error: ', error);
     }
@@ -144,7 +143,7 @@ class DrawingScreen extends React.Component {
   }
   render() {
     const { stageLabel } = this.props.route.params; // 전달받은 stageLabel을 가져옴
-    const { showModal } = this.state;
+    const { showModal, resultMessage } = this.state;
     const colors = ['black', 'white', 'red', 'blue', 'green', 'yellow'];
     return (
       <View>
@@ -153,7 +152,7 @@ class DrawingScreen extends React.Component {
           <Modal visible={showModal} transparent={true}>
             <View style={styles.modalStyle}>
               <View style={styles.modalInnerStyle}>
-                <Text style={{ fontSize: 40, marginBottom: 50 }}>점수: </Text>
+                <Text style={styles.modalInnerText}>{resultMessage}</Text>
                 <View
                   style={{
                     flexDirection: 'row',
