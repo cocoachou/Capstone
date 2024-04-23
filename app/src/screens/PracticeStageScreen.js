@@ -33,7 +33,7 @@ const PracticeStageScreen = () => {
   });
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <Text style={styles.title}>학습하기</Text>
       <ScrollView contentContainerStyle={styles.stageContainer}>
         {stageArray.map((stage, index) => (

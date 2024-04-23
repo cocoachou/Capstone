@@ -52,7 +52,7 @@ const StageScreen = () => {
   });
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
        <Text style={styles.title}>Stage</Text>
       <ScrollView contentContainerStyle={styles.stageContainer}>
         {Array.from({ length: numberOfStages }, (_, index) => (
