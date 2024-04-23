@@ -15,14 +15,18 @@ const StageScreen = () => {
   ); // 첫 번째 스테이지만 잠금 해제
 
   const onPress = (stageNumber, stageLabel) => {
+    const resultData = require('../../data/result.json');
     const updatedCompletedStages = [...completedStages];
-    updatedCompletedStages[stageNumber - 1] = true;
-    setCompletedStages(updatedCompletedStages);
     const updatedLockedStages = [...lockedStages];
-    if (stageNumber < numberOfStages) {
-      updatedLockedStages[stageNumber] = false; // 현재 스테이지의 다음 스테이지 잠금 해제
+    if (resultData.result === 1) {
+      updatedCompletedStages[stageNumber - 1] = true;
+      setCompletedStages(updatedCompletedStages);
+      
+      if (stageNumber < numberOfStages) {
+        updatedLockedStages[stageNumber] = false; // 현재 스테이지의 다음 스테이지 잠금 해제
+      }
+      setLockedStages(updatedLockedStages);
     }
-    setLockedStages(updatedLockedStages);
     navigation.navigate('DrawingScreen', {
       stageNumber: stageNumber,
       stageLabel: stageLabel,
