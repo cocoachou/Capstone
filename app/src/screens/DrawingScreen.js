@@ -13,7 +13,7 @@ import styles from '../components/Drawing';
 import LoadFile from '../components/LoadFile';
 import StageLabels from '../components/StageLabels';
 
-const PracticeDrawingScreen = ({ route, navigation }) => {
+const DrawingScreen = ({ route, navigation }) => {
   const [canvasTop, setCanvasTop] = useState(0);
   const [canvasLeft, setCanvasLeft] = useState(0);
   const [showModal, setShowModal] = useState(false);
@@ -198,4 +198,4 @@ const PracticeDrawingScreen = ({ route, navigation }) => {
   );
 };
 
-export default PracticeDrawingScreen;
+export default DrawingScreen;
