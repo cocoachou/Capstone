@@ -10,9 +10,9 @@ const StageScreen = () => {
   const [completedStages, setCompletedStages] = React.useState(
     Array(numberOfStages).fill(false)
   );
-
-  const [lockedStages, setLockedStages] = React.useState(Array(numberOfStages).fill(true).map((_, index) => index > 0)); // 첫 번째 스테이지만 잠금 해제
-
+  const [lockedStages, setLockedStages] = React.useState(
+    Array(numberOfStages).fill(true).map((_, index) => index > 0)
+  ); // 첫 번째 스테이지만 잠금 해제
 
   const onPress = (stageNumber, stageLabel) => {
     const updatedCompletedStages = [...completedStages];
@@ -29,16 +29,8 @@ const StageScreen = () => {
       completedStages: updatedCompletedStages,
       setCompletedStages: setCompletedStages,
     });
-    navigation.navigate('DrawingScreen', {
-      stageNumber: stageNumber,
-      stageLabel: stageLabel,
-      completedStages: completedStages,
-      setCompletedStages: setCompletedStages,
-    });
   };
 
-
-  
   const stageArray = Array.from({ length: numberOfStages }, (_, index) => {
     const stageLabel = StageLabels[index]; // stageNumber와 동일한 인덱스의 stageLabel을 가져옴
     return (
@@ -47,24 +39,17 @@ const StageScreen = () => {
         stageNumber={index + 1}
         stageLabel={stageLabel}
         onPress={onPress}
+        isCompleted={completedStages[index]}
+        isLocked={lockedStages[index]} // 잠금 상태 prop 전달
       />
     );
   });
 
   return (
     <View style={{ flex: 1 }}>
-       <Text style={styles.title}>Stage</Text>
+      <Text style={styles.title}>Stage</Text>
       <ScrollView contentContainerStyle={styles.stageContainer}>
-        {Array.from({ length: numberOfStages }, (_, index) => (
-          <Stage
-            key={index + 1}
-            stageNumber={index + 1}
-            stageLabel={StageLabels[index]}
-            onPress={onPress}
-            isCompleted={completedStages[index]}
-            isLocked={lockedStages[index]} // 잠금 상태 prop 전달
-          />
-        ))}
+        {stageArray}
       </ScrollView>
     </View>
   );
