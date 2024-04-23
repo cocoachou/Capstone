@@ -4,7 +4,7 @@ from werkzeug.utils import secure_filename
 import os
 import sys
 
-sys.path.append('E:/J/Capstone/app/model/')
+sys.path.append(os.path.abspath(os.path.join(__file__, '..', '..', 'model')))
 from result import result
 
 folder_path = "app/server/uploads"
