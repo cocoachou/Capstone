@@ -4,6 +4,7 @@ import LoginScreen from '../screens/LoginScreen';
 import StageScreen from '../screens/StageScreen';
 import DrawingScreen from '../screens/DrawingScreen';
 import MainScreen from '../screens/MainScreen';
+import PracticeStageScreen from '../screens/PracticeStageScreen';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,14 @@ const StackNavigator = () => {
         <Stack.Screen
           name="StageScreen"
           component={StageScreen}
+          options={{
+            title: '',
+            headerShown: true,
+          }}
+        />
+        <Stack.Screen
+          name="PracticeStageScreen"
+          component={PracticeStageScreen}
           options={{
             title: '',
             headerShown: true,

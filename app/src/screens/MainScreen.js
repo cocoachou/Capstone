@@ -14,6 +14,10 @@ const MainScreen = () => {
     navigation.navigate('StageScreen');
   };
 
+  const PressPracticeStart = () => {
+    navigation.navigate('PracticeStageScreen');
+  };
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -22,14 +26,17 @@ const MainScreen = () => {
       />
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => PressGameStart()}
+
+        <TouchableOpacity style={styles.button}
+        onPress={() => PressPracticeStart()}
         >
-          <Text style={styles.buttonText}>게임 시작</Text>
+          <Text style={styles.buttonText}>학습하기</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>기록</Text>
+
+        <TouchableOpacity style={styles.button}
+        onPress={() => PressGameStart()}
+        >
+          <Text style={styles.buttonText}>??모드</Text>
         </TouchableOpacity>
       </View>
     </View>
