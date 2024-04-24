@@ -58,7 +58,7 @@ const DrawingScreen = ({ route, navigation }) => {
       console.log('capture:', uri);
 
       const resultData = require('../../data/result.json');
-      const resultMessage = resultData.result === '1' ? '참 잘했어요!' : '다시 해봐요!';
+      const resultMessage = resultData.result === 1 ? '참 잘했어요!' : '다시 해봐요!';
 
       setUri(uri);
       setResultMessage(resultMessage);

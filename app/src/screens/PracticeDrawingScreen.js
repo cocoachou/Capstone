@@ -59,7 +59,7 @@ const PracticeDrawingScreen = ({ route, navigation }) => {
       console.log('capture:', uri);
 
       const resultData = require('../../data/result.json');
-      const resultMessage = resultData.result === '1' ? '참 잘했어요!' : '다시 해봐요!';
+      const resultMessage = resultData.result === 1 ? '참 잘했어요!' : '다시 해봐요!';
 
       setUri(uri);
       setResultMessage(resultMessage);
@@ -131,7 +131,7 @@ const PracticeDrawingScreen = ({ route, navigation }) => {
       <Text style={styles.textStyle}>{route.params.stageLabel}</Text>
       <View>
         <Image
-          source={require('../../data/hint/airplane.jpg')}
+          source={require('../../data/hint/butterfly.jpg')}
           style={{ width: '100%', height: 250 }}
         />
       </View>
