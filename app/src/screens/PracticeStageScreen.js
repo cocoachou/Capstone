@@ -10,9 +10,8 @@ const PracticeStageScreen = () => {
   const [completedStages, setCompletedStages] = React.useState(
     Array(numberOfStages).fill(false)
   );
-
   const onPress = (stageNumber, stageLabel) => {
-    navigation.navigate('DrawingScreen', {
+    navigation.navigate('PracticeDrawingScreen', {
       stageNumber: stageNumber,
       stageLabel: stageLabel,
       completedStages: completedStages,
@@ -47,18 +46,18 @@ const PracticeStageScreen = () => {
         ))}
       </ScrollView>
     </View>
-    );
-  };
-  const styles = StyleSheet.create({
-    stageContainer: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      justifyContent: 'center',
-    },
-    title: {
-      margin: 30,
-      fontSize: 30,
-      textAlign: 'center',
-    },
+  );
+};
+const styles = StyleSheet.create({
+  stageContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
+  title: {
+    margin: 30,
+    fontSize: 30,
+    textAlign: 'center',
+  },
 });
 export default PracticeStageScreen;

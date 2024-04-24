@@ -5,6 +5,7 @@ import StageScreen from '../screens/StageScreen';
 import DrawingScreen from '../screens/DrawingScreen';
 import MainScreen from '../screens/MainScreen';
 import PracticeStageScreen from '../screens/PracticeStageScreen';
+import PracticeDrawingScreen from '../screens/PracticeDrawingScreen';
 
 const Stack = createStackNavigator();
 
@@ -34,6 +35,10 @@ const StackNavigator = () => {
           }}
         />
         <Stack.Screen name="DrawingScreen" component={DrawingScreen} />
+        <Stack.Screen
+          name="PracticeDrawingScreen"
+          component={PracticeDrawingScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
